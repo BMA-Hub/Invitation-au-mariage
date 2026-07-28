@@ -554,3 +554,31 @@ padding:30px;
 }
 
 }
+
+.item,
+.message-card,
+.card{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:1s;
+
+}
+
+.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.card{
+
+transform-style:preserve-3d;
+
+transition:transform .25s ease;
+
+}
