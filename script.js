@@ -1,0 +1,1 @@
+const t=new Date('2026-10-03T15:00:00').getTime();setInterval(()=>{let d=t-Date.now();document.getElementById('countdown').textContent=d>0?Math.floor(d/86400000)+' jours restants':'Le grand jour est arrivé !';},1000);
