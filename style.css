@@ -119,66 +119,65 @@ transform:translate(-50%,-50%) scale(1.08);
 
 position:fixed;
 
-top:35px;
+top:0;
 
-width:50px;
+width:90px;
 
-height:90px;
+z-index:3;
 
-border:2px solid rgba(200,165,92,.5);
+opacity:.95;
 
-border-radius:10px;
+animation:swing 5s ease-in-out infinite;
 
-animation:swing 5s infinite ease-in-out;
+transform-origin:top;
 
-background:linear-gradient(#fff,#d6b574);
+filter:
 
-box-shadow:0 0 30px rgba(255,212,120,.2);
-
-}
-
-.lantern.left{
-
-left:40px;
+drop-shadow(0 0 18px rgba(255,212,120,.35));
 
 }
 
-.lantern.right{
+.lantern svg{
 
-right:40px;
+width:100%;
+
+height:auto;
+
+}
+
+.left{
+
+left:45px;
+
+}
+
+.right{
+
+right:45px;
 
 animation-delay:2s;
 
 }
 
-.lantern::before{
+@keyframes swing{
 
-content:"";
+0%{
 
-position:absolute;
-
-top:-35px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:2px;
-
-height:35px;
-
-background:#9b7740;
+transform:rotate(-3deg);
 
 }
-
-@keyframes swing{
 
 50%{
 
-transform:rotate(4deg);
+transform:rotate(3deg);
 
 }
 
+100%{
+
+transform:rotate(-3deg);
+
+}
 }
 
 /********************/
