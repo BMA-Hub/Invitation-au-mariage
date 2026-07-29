@@ -64,9 +64,77 @@
 
 <div class="glow"></div>
 
-<div class="lantern left"></div>
+<div class="lantern left">
 
-<div class="lantern right"></div>
+<svg viewBox="0 0 120 220">
+
+<defs>
+
+<linearGradient id="gold" x1="0" x2="0">
+
+<stop offset="0%" stop-color="#f6e2b2"/>
+
+<stop offset="100%" stop-color="#c79c46"/>
+
+</linearGradient>
+
+<radialGradient id="light">
+
+<stop offset="0%" stop-color="#fff8d5"/>
+
+<stop offset="100%" stop-color="#d6b05f"/>
+
+</radialGradient>
+
+</defs>
+
+<line x1="60" y1="0" x2="60" y2="40"
+stroke="#b18b42"
+stroke-width="2"/>
+
+<rect
+x="28"
+y="40"
+width="64"
+height="118"
+rx="10"
+fill="url(#light)"
+stroke="url(#gold)"
+stroke-width="3"/>
+
+<line x1="28" y1="70" x2="92" y2="70"
+stroke="#c79c46"/>
+
+<line x1="28" y1="100" x2="92" y2="100"
+stroke="#c79c46"/>
+
+<line x1="28" y1="130" x2="92" y2="130"
+stroke="#c79c46"/>
+
+<polygon
+points="60,160 72,188 60,214 48,188"
+fill="#c79c46"/>
+
+<circle
+cx="60"
+cy="98"
+r="18"
+fill="#fff5cf"
+opacity=".75"/>
+
+</svg>
+
+</div>
+
+<div class="lantern right">
+
+<svg viewBox="0 0 120 220">
+
+<use href="#lantern"/>
+
+</svg>
+
+</div>
 
 <section id="intro">
 
