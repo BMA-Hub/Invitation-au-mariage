@@ -841,3 +841,125 @@ transition:1s;
 left:120%;
 
 }
+
+.paper{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#fffefc,
+
+#fbf7ef
+
+);
+
+}
+
+.paper::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+radial-gradient(rgba(199,163,90,.05) 1px, transparent 1px);
+
+background-size:18px 18px;
+
+opacity:.35;
+
+pointer-events:none;
+
+}
+
+.paper h1{
+
+font-size:7rem;
+
+letter-spacing:2px;
+
+}
+
+.separator{
+
+font-size:55px;
+
+margin:35px 0;
+
+animation:shine 4s infinite;
+
+}
+
+@keyframes shine{
+
+0%,100%{
+
+opacity:.6;
+
+transform:scale(1);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.15);
+
+}
+
+}
+
+.maps{
+
+font-size:1.1rem;
+
+font-weight:600;
+
+padding:20px 45px;
+
+box-shadow:
+
+0 15px 40px rgba(199,163,90,.30);
+
+}
+
+.maps:hover{
+
+transform:translateY(-5px) scale(1.03);
+
+}
+
+#countdown div{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#ffffff,
+
+#faf6ef
+
+);
+
+box-shadow:
+
+0 12px 30px rgba(0,0,0,.06);
+
+}
+
+#countdown span{
+
+font-size:3rem;
+
+color:#4d3527;
+
+}
