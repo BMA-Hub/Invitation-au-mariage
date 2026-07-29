@@ -259,13 +259,15 @@ line-height:1.8;
 
 .separator{
 
-width:120px;
+text-align:center;
 
-height:2px;
+font-size:42px;
 
-background:var(--gold);
+color:var(--gold);
 
-margin:35px auto;
+margin:35px 0;
+
+letter-spacing:8px;
 
 }
 
