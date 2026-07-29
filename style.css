@@ -967,3 +967,55 @@ text-align:center;
 }
 
 }
+
+/**************
+ANIMATIONS
+**************/
+
+.visible{
+
+opacity:1 !important;
+
+transform:translateY(0) !important;
+
+}
+
+.infos div,
+.maps,
+#countdown div,
+.subtitle,
+.divider,
+h1,
+h4{
+
+opacity:0;
+
+transform:translateY(30px);
+
+transition:1s;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-80px);
+
+}
+
+100%{
+
+transform:translateY(-160px);
+
+opacity:0;
+
+}
+
+}
