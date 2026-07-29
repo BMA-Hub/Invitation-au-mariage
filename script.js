@@ -1,19 +1,15 @@
-/*==================================================
-PARTIE 3 - SCRIPT PREMIUM
-==================================================*/
-
 const intro = document.getElementById("intro");
-const invitation = document.getElementById("invitation");
+const card = document.getElementById("card");
 
 const seal = document.getElementById("seal");
 const flap = document.querySelector(".flap");
-const paper = document.querySelector(".paper");
+const letter = document.querySelector(".letter");
 
 let opened = false;
 
-/*******************************************
-OUVERTURE ENVELOPPE
-*******************************************/
+/****************************/
+/* OUVERTURE */
+/****************************/
 
 seal.addEventListener("click",()=>{
 
@@ -21,16 +17,17 @@ if(opened) return;
 
 opened=true;
 
-/* disparition du sceau */
+/* sceau */
 
 seal.animate([
 
 {
-transform:"translateX(-50%) scale(1)"
+transform:"translateX(-50%) scale(1)",
+opacity:1
 },
 
 {
-transform:"translateX(-50%) scale(1.3)",
+transform:"translateX(-50%) scale(1.4)",
 opacity:0
 }
 
@@ -41,7 +38,7 @@ fill:"forwards"
 
 });
 
-/* ouverture du rabat */
+/* rabat */
 
 setTimeout(()=>{
 
@@ -50,181 +47,141 @@ flap.style.zIndex="0";
 
 },300);
 
-/* sortie du papier */
+/* lettre */
 
 setTimeout(()=>{
 
-paper.style.transform="translate(-50%,-230px)";
+letter.style.transform="translate(-50%,-230px)";
 
-},700);
+},800);
 
-/* affichage de la carte */
+/* transition */
 
 setTimeout(()=>{
 
-intro.style.transition=".9s";
+intro.style.transition="1s";
+
 intro.style.opacity="0";
+
+},1800);
 
 setTimeout(()=>{
 
 intro.style.display="none";
 
-invitation.style.display="block";
+card.style.display="block";
 
-setTimeout(()=>{
+card.animate([
 
-invitation.style.opacity="1";
+{
+opacity:0,
+transform:"translateY(80px)"
+},
 
-window.scrollTo({
+{
+opacity:1,
+transform:"translateY(0)"
+}
 
-top:0,
-behavior:"smooth"
+],{
+
+duration:1200,
+fill:"forwards",
+easing:"ease"
 
 });
 
-},50);
-
-},900);
-
-},1700);
+},2600);
 
 });
 
+/****************************/
+/* COMPTE A REBOURS */
+/****************************/
 
-/*******************************************
-COMPTE A REBOURS
-*******************************************/
+const target = new Date("2026-10-03T15:00:00").getTime();
 
-const weddingDate = new Date("2026-10-03T15:00:00").getTime();
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
 
-function updateCountdown(){
+function countdown(){
 
 const now = new Date().getTime();
 
-const distance = weddingDate-now;
+const diff = target-now;
 
-if(distance<=0){
+if(diff<=0){
 
-document.getElementById("countdown").innerHTML=
-
-"<h2 style='grid-column:1/-1;text-align:center;color:#c7a35a;'>Aujourd'hui est le grand jour ❤️</h2>";
+document.getElementById("countdown").innerHTML="<h2>Bienvenue ❤️</h2>";
 
 return;
 
 }
 
-const days=Math.floor(distance/(1000*60*60*24));
+days.textContent=Math.floor(diff/86400000);
 
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+hours.textContent=Math.floor(diff/3600000)%24;
 
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+minutes.textContent=Math.floor(diff/60000)%60;
 
-const seconds=Math.floor((distance%(1000*60))/1000);
-
-daysEl.textContent=days;
-hoursEl.textContent=hours;
-minutesEl.textContent=minutes;
-secondsEl.textContent=seconds;
+seconds.textContent=Math.floor(diff/1000)%60;
 
 }
 
-const daysEl=document.getElementById("days");
-const hoursEl=document.getElementById("hours");
-const minutesEl=document.getElementById("minutes");
-const secondsEl=document.getElementById("seconds");
+countdown();
 
-updateCountdown();
+setInterval(countdown,1000);
 
-setInterval(updateCountdown,1000);
-
-/*******************************************
-PARALLAXE CARTE
-*******************************************/
+/****************************/
+/* EFFET 3D */
+/****************************/
 
 document.addEventListener("mousemove",(e)=>{
 
-const card=document.querySelector(".card");
+const paper=document.querySelector(".paper");
 
-if(!card) return;
+if(!paper) return;
 
-const x=(window.innerWidth/2-e.clientX)/45;
+const x=(window.innerWidth/2-e.clientX)/40;
 
-const y=(window.innerHeight/2-e.clientY)/45;
+const y=(window.innerHeight/2-e.clientY)/40;
 
-card.style.transform=
-
-`rotateY(${-x}deg) rotateX(${y}deg)`;
+paper.style.transform=`rotateY(${-x}deg) rotateX(${y}deg)`;
 
 });
 
 document.addEventListener("mouseleave",()=>{
 
-const card=document.querySelector(".card");
+const paper=document.querySelector(".paper");
 
-if(card){
+if(paper){
 
-card.style.transform="rotateY(0) rotateX(0)";
-
-}
-
-});
-
-/*******************************************
-APPARITION AU SCROLL
-*******************************************/
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("visible");
+paper.style.transform="rotateY(0deg) rotateX(0deg)";
 
 }
 
 });
 
-},{
+/****************************/
+/* PARTICULES DOREES */
+/****************************/
 
-threshold:.15
+for(let i=0;i<35;i++){
 
-});
+const p=document.createElement("div");
 
-document.querySelectorAll(".infos div,.maps,#countdown div,.subtitle,.divider,h1,h4")
-
-.forEach(el=>observer.observe(el));
-
-/*******************************************
-PARTICULES DOREES
-*******************************************/
-
-const particles=document.getElementById("particles");
-
-for(let i=0;i<40;i++){
-
-const p=document.createElement("span");
-
-p.style.position="absolute";
-
-p.style.width=Math.random()*4+2+"px";
-
-p.style.height=p.style.width;
-
-p.style.borderRadius="50%";
-
-p.style.background="#d6b36a";
+p.className="particle";
 
 p.style.left=Math.random()*100+"vw";
 
 p.style.top=Math.random()*100+"vh";
 
-p.style.opacity=Math.random()*.5+.2;
+p.style.animationDuration=6+Math.random()*8+"s";
 
-p.style.animation=
+p.style.animationDelay=Math.random()*5+"s";
 
-`float ${8+Math.random()*10}s linear infinite`;
-
-particles.appendChild(p);
+document.body.appendChild(p);
 
 }
