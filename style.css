@@ -121,19 +121,16 @@ position:fixed;
 
 top:0;
 
-width:90px;
+width:95px;
 
-z-index:3;
-
-opacity:.95;
+z-index:20;
 
 animation:swing 5s ease-in-out infinite;
 
-transform-origin:top;
+transform-origin:top center;
 
 filter:
-
-drop-shadow(0 0 18px rgba(255,212,120,.35));
+drop-shadow(0 0 18px rgba(255,220,120,.35));
 
 }
 
@@ -143,15 +140,17 @@ width:100%;
 
 height:auto;
 
+display:block;
+
 }
 
-.left{
+.lantern.left{
 
 left:45px;
 
 }
 
-.right{
+.lantern.right{
 
 right:45px;
 
@@ -163,7 +162,21 @@ animation-delay:2s;
 
 0%{
 
-transform:rotate(-3deg);
+transform:rotate(-4deg);
+
+}
+
+50%{
+
+transform:rotate(4deg);
+
+}
+
+100%{
+
+transform:rotate(-4deg);
+
+}
 
 }
 
